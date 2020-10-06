@@ -8,9 +8,7 @@ const base = Airtable.base(process.env.AIRTABLE_BASE_ID);
 const table = base.table("gallery");
 
 exports.handler = async (event) => {
-  const records = await table
-    // .select({ sort: [{ field: "order", direction: "asc" }] })
-    .firstPage();
+  const records = await table.select({}).firstPage();
   const formattedData = records.map((record) => ({
     id: record.id,
     fields: record.fields,
