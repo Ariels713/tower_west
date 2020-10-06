@@ -16,8 +16,8 @@ import {
   Button,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-
 import Image from "../assets/Image";
+import SideBarNav from "./SideBarNav";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -80,6 +80,7 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       background: "transparent",
     },
+    marginRight: "3%",
   },
   expandOpen: {
     transform: "rotate(180deg)",
@@ -219,7 +220,11 @@ const Topbar = (props) => {
               </List>
             </Hidden>
             <Hidden mdUp>
-              <IconButton className={classes.iconButton} aria-label="Menu">
+              <IconButton
+                className={classes.iconButton}
+                aria-label="Menu"
+                onClick={onSidebarOpen}
+              >
                 <MenuIcon />
               </IconButton>
             </Hidden>
