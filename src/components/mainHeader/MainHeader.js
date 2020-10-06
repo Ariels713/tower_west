@@ -38,6 +38,10 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: 0,
     paddingBottom: 0,
   },
+  span: {
+    fontWeight: "bold",
+    color: "#F9B933",
+  },
 }));
 
 const MainHeader = (props) => {
@@ -46,11 +50,7 @@ const MainHeader = (props) => {
   return (
     <div className={clsx(classes.root, className)} {...rest}>
       <Image
-        src="https://dl.airtable.com/.attachments/1e905a309170747a7a33e68b6b85a745/3b3de228/pexels-essow-kedelina-774712.jpg"
-        //   src="https://i.ibb.co/gVjPHvF/pexels-burst-374870.jpg"
-        // src="https://i.ibb.co/LCYfHDy/pexels-timur-saglambilek-87223.jpg"
-        // src="https://i.ibb.co/NpTbXRv/pexels-kozymeii-kong-950745.jpg"
-        // srcSet="/images/photos/about/hero-image.png 2x"
+        src="https://dl.airtable.com/.attachments/770eb2972b4f62390fa76ecef147de49/40c5d186/full1.jpg"
         alt="About"
         className={classes.image}
         lazyProps={{
@@ -60,7 +60,7 @@ const MainHeader = (props) => {
       />
       <Section className={classes.section}>
         <SectionHeader
-          title="Tower West"
+          title={<span className={classes.span}>Tower West</span>}
           subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim"
           align="left"
           data-aos="fade-up"

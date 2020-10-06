@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -12,6 +12,7 @@ import Image from "../assets/Image";
 import { folio } from "./dummyData";
 import Section from "../assets/Section";
 import SectionHeader from "../assets/SectionHeader";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,7 +68,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Gallery = (props) => {
-  const { data, className, ...rest } = props;
+  const [data, setData] = useState([]);
+  const [isLoading, setIsloading] = useState(true);
+  const [progress, setProgress] = useState(0);
+
+  const { className, ...rest } = props;
   const classes = useStyles();
 
   const theme = useTheme();
@@ -78,9 +83,12 @@ const Gallery = (props) => {
   useEffect(() => {
     const galleryphotos = async (event) => {
       try {
-        const res = await fetch("/.netlify/functions/getgalleryphotos");
+        const res = await fetch("/.netlify/functions/getGalleryPhotos");
         const data = await res.json();
-        console.log(data);
+        console.log(data[0].fields.cover[0].url);
+        setData(data);
+        // console.log(`state ${data}`);
+        setIsloading(false);
       } catch (err) {}
     };
 
@@ -88,64 +96,77 @@ const Gallery = (props) => {
   }, []);
 
   return (
-    <div className={clsx(classes.root, className)} {...rest}>
-      <Section className={classes.section}>
-        <SectionHeader
-          title={
-            <span>
-              Home At{" "}
-              <span className={classes.span}>Tower West Apartments</span>
-            </span>
-          }
-          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim"
-          align="center"
-          data-aos="fade-up"
-          disableGutter
-          titleProps={{
-            className: clsx(classes.title, classes.textWhite),
-            variant: "h3",
-          }}
-          subtitleProps={{
-            className: classes.textWhite,
-          }}
-        />
-      </Section>
-      <GridList cellHeight={isMd ? 360 : 260} cols={3} spacing={isMd ? 24 : 8}>
-        {folio.map((item, index) => (
-          <GridListTile key={index} cols={isMd ? item.cols : 3 || 1}>
-            <div className={classes.folioItem} key={index}>
-              <Image
-                src={item.cover}
-                alt={item.title}
-                className={clsx("folio__image", classes.image)}
-                lazyProps={{ width: "100%", height: "100%" }}
-              />
-              <div
-                className={clsx(
-                  "folio__info-wrapper",
-                  classes.folioInfoWrapper
-                )}
+    <>
+      {isLoading ? (
+        <CircularProgress variant="determinate" value={progress} />
+      ) : (
+        <div className={clsx(classes.root, className)} {...rest}>
+          <Section className={classes.section}>
+            <SectionHeader
+              title={
+                <span>
+                  Home At{" "}
+                  <span className={classes.span}>Tower West Apartments</span>
+                </span>
+              }
+              subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim"
+              align="center"
+              data-aos="fade-up"
+              disableGutter
+              titleProps={{
+                className: clsx(classes.title, classes.textWhite),
+                variant: "h3",
+              }}
+              subtitleProps={{
+                className: classes.textWhite,
+              }}
+            />
+          </Section>
+          <GridList
+            cellHeight={isMd ? 360 : 260}
+            cols={3}
+            spacing={isMd ? 24 : 8}
+          >
+            {data.map((item) => (
+              <GridListTile
+                key={item.id}
+                cols={isMd ? item.fields.cols : 3 || 1}
               >
-                <div className={classes.folioInfo}>
-                  <Typography variant="h6" className={classes.folioTitle}>
-                    {item.title}
-                  </Typography>
-                  <Typography
-                    variant="subtitle1"
-                    className={classes.folioSubtitle}
+                <div className={classes.folioItem} key={item.id}>
+                  <Image
+                    src={item.fields.cover[0].url}
+                    alt={item.fields.alt}
+                    className={clsx("folio__image", classes.image)}
+                    lazyProps={{ width: "100%", height: "100%" }}
+                  />
+                  <div
+                    className={clsx(
+                      "folio__info-wrapper",
+                      classes.folioInfoWrapper
+                    )}
                   >
-                    {item.subtitle}
-                  </Typography>
-                  {/* <Button variant="contained" color="secondary">
+                    <div className={classes.folioInfo}>
+                      <Typography variant="h6" className={classes.folioTitle}>
+                        {item.fields.title}
+                      </Typography>
+                      {/* <Typography
+                        variant="subtitle1"
+                        className={classes.folioSubtitle}
+                      >
+                        {item.subtitle}
+                      </Typography> */}
+                      {/* <Button variant="contained" color="secondary">
                     View more
                   </Button> */}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </GridListTile>
-        ))}
-      </GridList>
-    </div>
+              </GridListTile>
+            ))}
+          </GridList>
+        </div>
+      )}
+    </>
   );
 };
 
