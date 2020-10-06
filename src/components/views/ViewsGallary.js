@@ -87,7 +87,6 @@ const Gallery = (props) => {
         const data = await res.json();
         console.log(data[0].fields.cover[0].url);
         setData(data);
-        // console.log(`state ${data}`);
         setIsloading(false);
       } catch (err) {}
     };
@@ -134,7 +133,7 @@ const Gallery = (props) => {
               >
                 <div className={classes.folioItem} key={item.id}>
                   <Image
-                    src={item.fields.cover[0].url}
+                    src={item.fields.cover[0].thumbnails.full.url}
                     alt={item.fields.alt}
                     className={clsx("folio__image", classes.image)}
                     lazyProps={{ width: "100%", height: "100%" }}
@@ -149,15 +148,6 @@ const Gallery = (props) => {
                       <Typography variant="h6" className={classes.folioTitle}>
                         {item.fields.title}
                       </Typography>
-                      {/* <Typography
-                        variant="subtitle1"
-                        className={classes.folioSubtitle}
-                      >
-                        {item.subtitle}
-                      </Typography> */}
-                      {/* <Button variant="contained" color="secondary">
-                    View more
-                  </Button> */}
                     </div>
                   </div>
                 </div>
