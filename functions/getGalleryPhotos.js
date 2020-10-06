@@ -9,7 +9,7 @@ const table = base.table("gallery");
 
 exports.handler = async (event) => {
   const records = await table
-    .select({ sort: [{ field: "order", direction: "asc" }] })
+    // .select({ sort: [{ field: "order", direction: "asc" }] })
     .firstPage();
   const formattedData = records.map((record) => ({
     id: record.id,
