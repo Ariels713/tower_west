@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -74,6 +74,18 @@ const Gallery = (props) => {
   const isMd = useMediaQuery(theme.breakpoints.up("md"), {
     defaultMatches: true,
   });
+
+  useEffect(() => {
+    const galleryphotos = async (event) => {
+      try {
+        const res = await fetch("/.netlify/functions/getgalleryphotos");
+        const data = await res.json();
+        console.log(data);
+      } catch (err) {}
+    };
+
+    galleryphotos();
+  }, []);
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>
