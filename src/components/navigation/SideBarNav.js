@@ -77,6 +77,7 @@ const SidebarNav = (props) => {
       </ListItem>
       <ListItem className={classes.listItem}>
         <Typography
+          style={{ textDecoration: "none", color: "#536e7a" }}
           variant="h6"
           color="textPrimary"
           gutterBottom
@@ -92,6 +93,7 @@ const SidebarNav = (props) => {
       </ListItem>
       <ListItem className={classes.listItem}>
         <Typography
+          style={{ textDecoration: "none", color: "#536e7a" }}
           variant="h6"
           color="textPrimary"
           gutterBottom
@@ -107,6 +109,7 @@ const SidebarNav = (props) => {
       </ListItem>
       <ListItem className={classes.listItem}>
         <Typography
+          style={{ textDecoration: "none", color: "#536e7a" }}
           variant="h6"
           color="textPrimary"
           gutterBottom
@@ -121,6 +124,7 @@ const SidebarNav = (props) => {
       </ListItem>
       <ListItem className={classes.listItem}>
         <Typography
+          style={{ textDecoration: "none", color: "#536e7a" }}
           variant="h6"
           color="textPrimary"
           gutterBottom
@@ -135,13 +139,18 @@ const SidebarNav = (props) => {
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
+          style={{
+            boxShadow: "none",
+            backgroundColor: "#F9B933",
+            color: "white",
+          }}
           size="large"
           variant="contained"
           fullWidth
           component={Link}
           to="/contact"
         >
-          Buy Now
+          Contact
         </Button>
       </ListItem>
     </List>

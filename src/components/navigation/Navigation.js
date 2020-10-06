@@ -17,7 +17,6 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import Image from "../assets/Image";
-import SideBarNav from "./SideBarNav";
 
 const useStyles = makeStyles((theme) => ({
   root: {
