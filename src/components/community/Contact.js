@@ -112,7 +112,7 @@ const Contact = (props) => {
               <ListItemText
                 className={classes.listItemText}
                 primary="Email"
-                secondary="hi@maccarianagency.com"
+                secondary="tower@west.com"
                 primaryTypographyProps={{
                   className: classes.title,
                   variant: "subtitle1",
@@ -137,7 +137,7 @@ const Contact = (props) => {
               <ListItemText
                 className={classes.listItemText}
                 primary="Head Office"
-                secondary="Via E. Golla 4"
+                secondary="6050 BLVD East"
                 primaryTypographyProps={{
                   className: classes.title,
                   variant: "subtitle1",
