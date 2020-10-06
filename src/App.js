@@ -1,25 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import Navigation from "./components/navigation/Navigation";
+import MainHeader from "./components/mainHeader/MainHeader";
+import HeaderContent from "./components/headerContent/HeaderContent";
+import ViewsGallary from "./components/views/ViewsGallary";
+import ContactPage from "./components/contactPage/ContactPage";
 
+import NewsLetter from "./components/newsLetter/NewsLetter";
+import Availability from "./components/availability/Availability";
+import Contact from "./components/community/Contact";
+import Community from "./components/community/Community";
+import Amenities from "./components/amenities/Amenities";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navigation />
+      <Switch>
+        <Route exact path="/contact">
+          <ContactPage />
+        </Route>
+        <Route exact path="/availability">
+          <Availability />
+        </Route>
+        <Route exact path="/community">
+          <Community />
+        </Route>
+        <Route exact path="/amenities">
+          <Amenities />
+        </Route>
+        <Route exact path="/">
+          <MainHeader />
+          <HeaderContent />
+          <ViewsGallary />
+          <NewsLetter />
+        </Route>
+      </Switch>
+      <Contact />
+    </>
   );
 }
 
