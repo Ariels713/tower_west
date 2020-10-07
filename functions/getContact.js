@@ -6,7 +6,7 @@ var base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
 );
 
 exports.handler = async (event) => {
-  const { email } = JSON.parse(event.body);
+  const { name, email, message } = JSON.parse(event.body);
   await base("contact").create([
     {
       fields: {
