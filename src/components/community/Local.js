@@ -2,18 +2,45 @@ import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { useMediaQuery, Grid } from "@material-ui/core";
+import {
+  useMediaQuery,
+  Grid,
+  Typography,
+  Button,
+  colors,
+} from "@material-ui/core";
 import SectionHeader from "../assets/SectionHeader";
-import CardPromo from "../assets/CardPromo";
-import { promoNumbers } from "./dummyData";
+import CardProduct from "../assets/CardProduct";
+import Image from "../assets/Image";
+import { events } from "./dummyData";
+
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: "3% auto",
-    maxWidth: "65%",
+    // margin: "3% auto",
+    // maxWidth: "85%",
+  },
+  fontWeight700: {
+    fontWeight: 700,
+  },
+  coverImage: {
+    objectFit: "cover",
   },
   span: {
     color: "#F9B933",
     fontWeight: "bold",
+  },
+  button: {
+    backgroundColor: "transparent",
+    color: "#F9B933",
+    width: "100%",
+  },
+  // card: {
+  //   maxWidth: "350px",
+  //   minWidth: "350px",
+  // },
+  container: {
+    margin: "3% auto",
+    maxWidth: "85%",
   },
 }));
 
@@ -27,44 +54,86 @@ const PromoNumbers = (props) => {
   });
 
   return (
-    <div className={clsx(classes.root, className)} {...rest}>
-      <SectionHeader
-        title={
-          <span>
-            Living IN <span className={classes.span}>West New York</span>
-          </span>
-        }
-        subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim"
-        fadeUp
-      />
-      <Grid container spacing={isMd ? 4 : 2}>
-        {promoNumbers.map((item, index) => (
-          <Grid
-            key={index}
-            item
-            container
-            alignItems="center"
-            direction="column"
-            xs={12}
-            sm={6}
-            md={3}
-            data-aos="fade-up"
-          >
-            <CardPromo
-              variant="outlined"
-              liftUp
-              align={isMd ? "left" : "center"}
-              title={item.title}
-              subtitle={item.subtitle}
-              description={item.description}
-              fontIconClass={item.icon}
-              color={item.color}
-              titleColor="secondary"
-            />
+    <>
+      <div className={clsx(classes.root, className)} {...rest}>
+        <SectionHeader
+          title={
+            <span>
+              Living IN <span className={classes.span}>West New York</span>
+            </span>
+          }
+          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim"
+          fadeUp
+        />
+        <div className={classes.container}>
+          <Grid container spacing={isMd ? 4 : 2}>
+            {events.map((item, index) => (
+              <Grid key={index} item xs={12} md={4} data-aos={"fade-up"}>
+                <CardProduct
+                  className={classes.card}
+                  withShadow
+                  liftUp
+                  mediaContent={
+                    <Image
+                      className={classes.coverImage}
+                      {...item.cover}
+                      alt={item.title}
+                      lazyProps={{
+                        width: "100%",
+                        height: "100%",
+                      }}
+                    />
+                  }
+                  cardContent={
+                    <Grid container spacing={1}>
+                      <Grid item xs={12}>
+                        <Typography
+                          variant="h6"
+                          color="textPrimary"
+                          align="left"
+                          className={classes.fontWeight700}
+                        >
+                          {item.title}
+                        </Typography>
+                      </Grid>
+                      <Grid
+                        item
+                        container
+                        alignItems="center"
+                        wrap="nowrap"
+                        xs={12}
+                      ></Grid>
+                      <Grid item xs={12}>
+                        <Typography
+                          noWrap
+                          variant="body1"
+                          color="primary"
+                          className={classes.fontWeight700}
+                        >
+                          {item.place}
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Button
+                          size="small"
+                          className={classes.button}
+                          disableRipple
+                          disableFocusRipple
+                          target="blank"
+                          // href={item.rdc_web_url}
+                        >
+                          Learn More
+                        </Button>
+                      </Grid>
+                    </Grid>
+                  }
+                />
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
-    </div>
+        </div>
+      </div>
+    </>
   );
 };
 
