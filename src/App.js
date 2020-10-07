@@ -12,6 +12,7 @@ import Availability from "./components/availability/Availability";
 import Contact from "./components/community/Contact";
 import Community from "./components/community/Community";
 import Amenities from "./components/amenities/Amenities";
+import CardReview from "./components/reviews/CardReview";
 import { useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 
@@ -53,6 +54,7 @@ function App() {
           <HeaderContent />
           <ViewsGallary />
           <NewsLetter />
+          <CardReview />
         </Route>
       </Switch>
       <Contact />
