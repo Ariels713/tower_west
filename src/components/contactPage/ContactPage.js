@@ -87,7 +87,9 @@ const ContactPageCover = () => {
       await fetch("/.netlify/functions/getContact", {
         method: "POST",
         body: JSON.stringify({
+          name,
           email,
+          message,
         }),
       });
       resetForm();
