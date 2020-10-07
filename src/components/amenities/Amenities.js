@@ -48,7 +48,7 @@ const Features = (props) => {
 
   return (
     <>
-      <MainHeader />
+      <MainHeader headerImage="https://dl.airtable.com/.attachments/1b9607a4d7cd303303c0bdb6548475a7/60182c7f/full8.jpg" />
       <div className={clsx(classes.root, className)} {...rest}>
         <SectionHeader
           title={

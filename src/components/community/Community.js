@@ -17,7 +17,7 @@ const ContactPageSidebarMap = () => {
 
   return (
     <div className={classes.root}>
-      <Mainheader />
+      <Mainheader headerImage="https://dl.airtable.com/.attachments/770eb2972b4f62390fa76ecef147de49/40c5d186/full1.jpg" />
       {/* <MapDetails /> */}
       <Form data={mapData} />
       <Divider />

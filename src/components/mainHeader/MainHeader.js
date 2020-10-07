@@ -50,7 +50,7 @@ const MainHeader = (props) => {
   return (
     <div className={clsx(classes.root, className)} {...rest}>
       <Image
-        src="https://dl.airtable.com/.attachments/770eb2972b4f62390fa76ecef147de49/40c5d186/full1.jpg"
+        src={props.headerImage}
         alt="About"
         className={classes.image}
         lazyProps={{

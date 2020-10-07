@@ -28,7 +28,8 @@ function App() {
   const handleSidebarClose = () => {
     setOpenSidebar(false);
   };
-
+  const image =
+    "https://dl.airtable.com/.attachmentThumbnails/fba8531779308c08a4fc4f12dc55256d/0bd6f1cf";
   const open = isMd ? false : openSidebar;
   return (
     <>
@@ -48,7 +49,7 @@ function App() {
           <Amenities />
         </Route>
         <Route exact path="/">
-          <MainHeader />
+          <MainHeader headerImage={image} />
           <HeaderContent />
           <ViewsGallary />
           <NewsLetter />

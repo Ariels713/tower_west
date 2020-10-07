@@ -1,9 +1,8 @@
 /* eslint-disable react/no-multi-comp */
 /* eslint-disable react/display-name */
-import React, { forwardRef } from "react";
-import { NavLink as RouterLink } from "react-router-dom";
+import React from "react";
 import clsx from "clsx";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   List,
@@ -57,12 +56,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
 }));
-
-const CustomRouterLink = forwardRef((props, ref) => (
-  <div ref={ref} style={{ flexGrow: 1 }}>
-    <RouterLink {...props} />
-  </div>
-));
 
 const SidebarNav = (props) => {
   const { pages, onClose, className, ...rest } = props;
@@ -157,10 +150,10 @@ const SidebarNav = (props) => {
   );
 };
 
-SidebarNav.propTypes = {
-  className: PropTypes.string,
-  pages: PropTypes.object.isRequired,
-  onClose: PropTypes.func,
-};
+// SidebarNav.propTypes = {
+//   className: PropTypes.string,
+//   pages: PropTypes.object.isRequired,
+//   onClose: PropTypes.func,
+// };
 
 export default SidebarNav;

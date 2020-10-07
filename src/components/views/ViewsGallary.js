@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import {
@@ -9,7 +9,6 @@ import {
   Typography,
 } from "@material-ui/core";
 import Image from "../assets/Image";
-import { folio } from "./dummyData";
 import Section from "../assets/Section";
 import SectionHeader from "../assets/SectionHeader";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -70,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
 const Gallery = (props) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsloading] = useState(true);
-  const [progress, setProgress] = useState(0);
+  const [progress] = useState(0);
 
   const { className, ...rest } = props;
   const classes = useStyles();
@@ -85,7 +84,7 @@ const Gallery = (props) => {
       try {
         const res = await fetch("/.netlify/functions/getGalleryPhotos");
         const data = await res.json();
-        console.log(data[0].fields.cover[0].url);
+        // console.log(data[0].fields.cover[0].url);
         setData(data);
         setIsloading(false);
       } catch (err) {}
@@ -160,15 +159,15 @@ const Gallery = (props) => {
   );
 };
 
-Gallery.propTypes = {
-  /**
-   * External classes
-   */
-  className: PropTypes.string,
-  /**
-   * data to be rendered
-   */
-  data: PropTypes.array.isRequired,
-};
+// Gallery.propTypes = {
+//   /**
+//    * External classes
+//    */
+//   className: PropTypes.string,
+//   /**
+//    * data to be rendered
+//    */
+//   data: PropTypes.array.isRequired,
+// };
 
 export default Gallery;
