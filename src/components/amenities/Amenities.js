@@ -101,7 +101,7 @@ const Features = (props) => {
             data-aos="fade-up"
           >
             <Image
-              src="https://i.ibb.co/gVjPHvF/pexels-burst-374870.jpg"
+              src="https://dl.airtable.com/.attachments/67eb27ba370a9f9f4de63bbdc6c42916/66b73f48/full2.jpg"
               alt="..."
               className={classes.coverImage}
             />
@@ -122,7 +122,7 @@ const Features = (props) => {
             data-aos="fade-up"
           >
             <Image
-              src="https://i.ibb.co/gVjPHvF/pexels-burst-374870.jpg"
+              src="https://dl.airtable.com/.attachments/b7f2e1ea35aa66804a58505b1aced5b6/21c38ba3/full5.jpg"
               alt="..."
               className={classes.coverImage}
             />
@@ -199,7 +199,7 @@ const Features = (props) => {
             data-aos="fade-up"
           >
             <Image
-              src="https://i.ibb.co/gVjPHvF/pexels-burst-374870.jpg"
+              src="https://dl.airtable.com/.attachments/9bbf7dbc030fe584c05e8c2bc5ece270/9ad5582f/8cd16365809cc903908d8b88b9dc6c3c0b26aded_original.jpg"
               alt="..."
               className={classes.coverImage}
             />
@@ -219,7 +219,7 @@ const Features = (props) => {
             data-aos="fade-up"
           >
             <Image
-              src="https://i.ibb.co/gVjPHvF/pexels-burst-374870.jpg"
+              src="https://dl.airtable.com/.attachments/69d490a824d26bfbe95c837dcdd72f5a/9b53ea98/a064484f6708b2afe479e89723821683-uncropped_scaled_within_1536_1152.jpg"
               alt="..."
               className={classes.coverImage}
             />
