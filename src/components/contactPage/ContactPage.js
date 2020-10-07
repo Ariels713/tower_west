@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import {
   useMediaQuery,
@@ -70,6 +70,33 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ContactPageCover = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [sentMessage, setSentMessage] = useState(false);
+
+  const resetForm = () => {
+    setName("");
+    setEmail("");
+    setMessage("");
+  };
+
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    try {
+      await fetch("/.netlify/functions/getContact", {
+        method: "POST",
+        body: JSON.stringify({
+          email,
+        }),
+      });
+      resetForm();
+      setSentMessage(true);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const classes = useStyles();
 
   const theme = useTheme();
@@ -95,73 +122,96 @@ const ContactPageCover = () => {
               data-aos="fade-up"
               align="center"
             />
-            <div className={classes.form}>
-              <Grid container spacing={isMd ? 4 : 2}>
-                <Grid item xs={12} data-aos="fade-up">
-                  <Typography
-                    variant="subtitle1"
-                    color="textPrimary"
-                    className={classes.inputTitle}
-                  >
-                    Full name
-                  </Typography>
-                  <TextField
-                    placeholder="Your full name"
-                    variant="outlined"
-                    size="medium"
-                    name="fullname"
-                    fullWidth
-                    type="text"
-                  />
+            {sentMessage ? (
+              <SectionHeader
+                title={
+                  <span style={{ color: "#F9B933" }}>
+                    Thanks For Reacting out.
+                  </span>
+                }
+                subtitle="We'll be in contact soon"
+                fadeUp
+                style={{ marginTop: "1%" }}
+              />
+            ) : (
+              <div className={classes.form}>
+                <Grid container spacing={isMd ? 4 : 2}>
+                  <Grid item xs={12} data-aos="fade-up">
+                    <Typography
+                      variant="subtitle1"
+                      color="textPrimary"
+                      className={classes.inputTitle}
+                    >
+                      Full name
+                    </Typography>
+                    <TextField
+                      placeholder="Your full name"
+                      variant="outlined"
+                      size="medium"
+                      name="fullname"
+                      fullWidth
+                      type="text"
+                      name="name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </Grid>
+                  <Grid item xs={12} data-aos="fade-up">
+                    <Typography
+                      variant="subtitle1"
+                      color="textPrimary"
+                      className={classes.inputTitle}
+                    >
+                      E-mail
+                    </Typography>
+                    <TextField
+                      placeholder="Your e-mail address"
+                      variant="outlined"
+                      size="medium"
+                      name="email"
+                      fullWidth
+                      type="email"
+                      name="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </Grid>
+                  <Grid item xs={12} data-aos="fade-up">
+                    <Typography
+                      variant="subtitle1"
+                      color="textPrimary"
+                      className={classes.inputTitle}
+                    >
+                      Message
+                    </Typography>
+                    <TextField
+                      placeholder="Your question about our services"
+                      variant="outlined"
+                      name="message"
+                      fullWidth
+                      multiline
+                      rows={4}
+                      name="message"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                    />
+                  </Grid>
+                  <Grid item container justify="center" xs={12}>
+                    <Button
+                      onClick={submitHandler}
+                      variant="contained"
+                      type="submit"
+                      color="primary"
+                      size="large"
+                      fullWidth
+                      style={{ boxShadow: "none", backgroundColor: "#f9b933" }}
+                    >
+                      submit
+                    </Button>
+                  </Grid>
                 </Grid>
-                <Grid item xs={12} data-aos="fade-up">
-                  <Typography
-                    variant="subtitle1"
-                    color="textPrimary"
-                    className={classes.inputTitle}
-                  >
-                    E-mail
-                  </Typography>
-                  <TextField
-                    placeholder="Your e-mail address"
-                    variant="outlined"
-                    size="medium"
-                    name="email"
-                    fullWidth
-                    type="email"
-                  />
-                </Grid>
-                <Grid item xs={12} data-aos="fade-up">
-                  <Typography
-                    variant="subtitle1"
-                    color="textPrimary"
-                    className={classes.inputTitle}
-                  >
-                    Message
-                  </Typography>
-                  <TextField
-                    placeholder="Your question about our services"
-                    variant="outlined"
-                    name="message"
-                    fullWidth
-                    multiline
-                    rows={4}
-                  />
-                </Grid>
-                <Grid item container justify="center" xs={12}>
-                  <Button
-                    variant="contained"
-                    type="submit"
-                    color="primary"
-                    size="large"
-                    fullWidth
-                    style={{ boxShadow: "none", backgroundColor: "#f9b933" }}
-                  >
-                    submit
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </Section>
