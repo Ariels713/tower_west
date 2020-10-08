@@ -1,3 +1,5 @@
+import { LocalParkingSharp, RestaurantSharp } from "@material-ui/icons";
+
 export const partners = [
   {
     name: "Airbnb",
@@ -327,35 +329,45 @@ export const reviews = [
   },
 ];
 
+parks;
+School;
+Martkets;
+Gyms;
+Nightlife;
+leasuer;
 export const events = [
   {
     cover: {
       src: "/images/photos/expo-gallery/gallery1.jpg",
-      srcSet: "/images/photos/expo-gallery/gallery1@2x.jpg 2x",
+      // srcSet: "/images/photos/expo-gallery/gallery1@2x.jpg 2x",
     },
-    title: "Sales philosophy and future",
+    title: "Transportation",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    place: "Dojo Club",
-    time: "2:00 PM - 5:00 PM",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
+    place: "Bus, Ferry  ",
+    href_bus: "https://www.panynj.gov/bus-terminals/en/port-authority.html",
+    href_ferry: "https://www.nywaterway.com/ferryroutesschedules.aspx",
+    // time: "2:00 PM - 5:00 PM",
   },
   {
     cover: {
       src: "/images/photos/expo-gallery/gallery2.jpg",
       srcSet: "/images/photos/expo-gallery/gallery2@2x.jpg 2x",
     },
-    title: "Introduction to Design Thinking",
+    title: "Restaurants",
     description:
-      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
     place: "Upstairs",
     time: "11:30 AM - 1:00 AM",
+    href:
+      "https://www.yelp.com/search?cflt=restaurants&find_loc=West+New+York%2C+NJ+07093",
   },
   {
     cover: {
       src: "/images/photos/expo-gallery/gallery3.jpg",
       srcSet: "/images/photos/expo-gallery/gallery3@2x.jpg 2x",
     },
-    title: "Instagram grow experiments",
+    title: "Our Parks",
     description:
       "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     place: "Loop Lab",
