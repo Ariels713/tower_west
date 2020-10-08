@@ -86,6 +86,7 @@ const PromoNumbers = (props) => {
           />
           <div className={classes.container}>
             <Grid container spacing={isMd ? 4 : 2}>
+              {console.log(data)}
               {data.map((item) => (
                 <Grid key={item.id} item xs={12} md={4} data-aos={"fade-up"}>
                   <CardProduct
@@ -95,8 +96,8 @@ const PromoNumbers = (props) => {
                     mediaContent={
                       <Image
                         className={classes.coverImage}
-                        src={item.image}
-                        alt={item.title}
+                        src={item.fields.image[0].url}
+                        alt={item.fields.title}
                         lazyProps={{
                           width: "100%",
                           height: "100%",
@@ -112,7 +113,7 @@ const PromoNumbers = (props) => {
                             align="left"
                             className={classes.fontWeight700}
                           >
-                            {item.title}
+                            {item.fields.title}
                           </Typography>
                         </Grid>
                         <Grid
@@ -129,7 +130,7 @@ const PromoNumbers = (props) => {
                             color="primary"
                             className={classes.fontWeight700}
                           >
-                            {item.type}
+                            {item.fields.type}
                           </Typography>
                         </Grid>
                         <Grid item xs={12}>
@@ -139,7 +140,7 @@ const PromoNumbers = (props) => {
                             disableRipple
                             disableFocusRipple
                             target="blank"
-                            href={item.href}
+                            href={item.fields.href}
                           >
                             Learn More
                           </Button>
