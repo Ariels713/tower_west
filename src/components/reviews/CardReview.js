@@ -14,6 +14,10 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     maxWidth: 500,
   },
+  span: {
+    color: "#F9B933",
+    fontWeight: "bold",
+  },
 }));
 
 const Reviews = (props) => {
@@ -40,9 +44,8 @@ const Reviews = (props) => {
       <SectionHeader
         title={
           <span>
-            Take at what are
-            <span className={classes.span}>Residents</span>
-            are saying.
+            What <span className={classes.span}> Residents </span>
+            are saying
           </span>
         }
         subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
